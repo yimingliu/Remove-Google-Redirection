@@ -10,7 +10,11 @@ Browser Support
 
 * Apple Safari
 
-Download from Github: [Remove Google Redirection for Safari](https://github.com/dangoakachan/Remove-Google-Redirection/raw/master/extension/safari/remove-google-redirection.safariextz)
+Ported extension to the new Safari App Extension API, for use with macOS 10.14 Mojave or Safari Technology Preview 58 on macOS 10.13 High Sierra.
+
+Compile the .xcodeproj.  Go into `Preferences -> Extensions` and turn on the new App Extension.  The rest of the code should be unchanged from the legacy `.safariextz`.
+
+(yimingliu)
 
 * Google Chrome:
 

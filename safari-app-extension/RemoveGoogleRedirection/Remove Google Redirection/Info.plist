@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Remove Google Redirection</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.Safari.extension</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>SafariExtensionHandler</string>
+		<key>SFSafariContentScript</key>
+		<array>
+			<dict>
+				<key>Script</key>
+				<string>remove-google-redirection.user.js</string>
+			</dict>
+		</array>
+		<key>SFSafariWebsiteAccess</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.google.com</string>
+				<string>www.google.com.hk</string>
+				<string>www.google.com.sg</string>
+				<string>www.google.co.uk</string>
+				<string>www.google.co.jp</string>
+			</array>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright (c) 2017 kodango ; modified per LICENSE by Yiming Liu</string>
+	<key>NSHumanReadableDescription</key>
+	<string>Prohibit click-tracking, and prevent url redirection in Google search results.</string>
+</dict>
+</plist>
