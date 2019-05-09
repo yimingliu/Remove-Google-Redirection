@@ -2,8 +2,8 @@
  * Name: Remove Google Redirection
  *
  * Description:
- * 
- * Prohibit click-tracking, and prevent url redirection when clicks on the 
+ *
+ * Prohibit click-tracking, and prevent url redirection when clicks on the
  * result links in Google search page.
  */
 
@@ -58,7 +58,23 @@ document.addEventListener("DOMContentLoaded", function(event)
         var need_clean = false;
 
         /* Find the original url */
-        var result = /\/(?:url|imgres).*[&?](?:url|q|imgurl)=([^&]+)/i.exec(a.href);
+     
+        var result = "";
+        if (a.pathname && (a.pathname.startsWith("/imgres") || a.pathname.startsWith("imgres")))
+        {
+            // the bug is because the regex is picking up the last q= parameter in /imgres results.  the quickest hack around this is to separate out img vs normal query parsing
+            result = /\/(?:imgres).*[&?](?:imgurl)=([^&]+)/i.exec(a.href);
+        }
+        else {
+            result = /\/(?:url|imgres).*[&?](?:url|q|imgurl)=([^&]+)/i.exec(a.href);
+
+        }
+        // try to url-decode an encoded component to workaround broken homepage links
+
+         if(result && result[1].indexOf('%') != -1) {
+            result[1] = decodeURIComponent(result[1]);
+         }
+//        console.log("result", result);
 
         if (result) {
             need_clean = true;
