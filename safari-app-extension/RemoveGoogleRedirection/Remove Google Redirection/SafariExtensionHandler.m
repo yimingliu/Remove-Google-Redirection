@@ -18,8 +18,20 @@
 - (void)messageReceivedWithName:(NSString *)messageName fromPage:(SFSafariPage *)page userInfo:(NSDictionary *)userInfo {
     // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
     [page getPagePropertiesWithCompletionHandler:^(SFSafariPageProperties *properties) {
-        NSLog(@"The extension received a message (%@) from a script injected into (%@) with userInfo (%@)", messageName, properties.url, userInfo);
+        if ([messageName isEqualToString:@"get-preferences"])
+        {
+            [page dispatchMessageToScriptWithName:@"got-preferences" userInfo:[self preferencesFromDefaults]];
+        }
+//        NSLog(@"The extension received a message (%@) from a script injected into (%@) with userInfo (%@)", messageName, properties.url, userInfo);
     }];
+}
+
+- (NSDictionary *)preferencesFromDefaults
+{
+    NSDictionary *preferences = [[NSDictionary alloc] initWithObjectsAndKeys:
+     [[self sharedUserDefaults] objectForKey:@"disableForImages"],  @"disableForImages",
+     nil];
+    return preferences;
 }
 //
 //- (void)toolbarItemClickedInWindow:(SFSafariWindow *)window {
@@ -34,6 +46,20 @@
 
 - (SFSafariExtensionViewController *)popoverViewController {
     return [SafariExtensionViewController sharedController];
+}
+
+- (NSUserDefaults *)sharedUserDefaults
+{
+    static NSUserDefaults *defaults;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.yimingliu.remove-google-redirection"];
+        NSDictionary *appDefaults = @{
+                                      @"disableForImages" : @NO
+                                      };
+        [defaults registerDefaults:appDefaults];
+    });
+    return defaults;
 }
 
 @end

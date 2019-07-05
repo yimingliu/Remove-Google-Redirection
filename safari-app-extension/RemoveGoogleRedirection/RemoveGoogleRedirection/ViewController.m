@@ -12,7 +12,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    NSUserDefaults* defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.yimingliu.remove-google-redirection"];
+    NSDictionary *appDefaults = @{
+                                  @"disableForImages" : @NO
+                                  };
+    [defaults registerDefaults:appDefaults];
+    NSUserDefaultsController *defaultsController = [[NSUserDefaultsController alloc] initWithDefaults:defaults initialValues:appDefaults];
+    [disableForImageSearch bind:@"value"
+                       toObject:defaultsController
+           withKeyPath:@"values.disableForImages"
+               options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
+                                                   forKey:@"NSContinuouslyUpdatesValue"]];
     // Do any additional setup after loading the view.
 }
 
