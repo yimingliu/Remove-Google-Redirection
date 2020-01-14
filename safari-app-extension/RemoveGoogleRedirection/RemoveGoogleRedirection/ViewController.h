@@ -11,6 +11,7 @@
 @interface ViewController : NSViewController
 {
     IBOutlet NSButton *disableForImageSearch;
+    IBOutlet NSButton *restoreOldSERP;
 }
 
 @end

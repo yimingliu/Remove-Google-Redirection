@@ -105,6 +105,63 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 clone.dataset['cleaned'] = 1;
             }
         }
+     
+        function fixUpSERP()
+        {
+          var results = document.querySelectorAll("div.r");
+          var i;
+          for (i=0; i < results.length; i++)
+          {
+              var result = results[i];
+              var cite_link = result.querySelector("cite.iUh30");
+              var title_link = result.querySelector("h3.LC20lb");
+              var br_node = null;
+              var action_node = result.querySelector("div.yWc32e");
+              var img_node = result.querySelector("img.xA33Gc");
+              var real_link = result.querySelector("a");
+              if (img_node)
+              {
+                  img_node.setAttribute('style', 'display: None !important');
+              }
+              if (cite_link)
+              {
+                  cite_link.setAttribute('style', 'color: #006621 !important');
+                  if (real_link)
+                  {
+                      cite_link.textContent = real_link.getAttribute("href");
+                  }
+                  //cite_link.textContent = cite_link.textContent.replace(/ › /g, "/");
+                  br_node = cite_link.parentNode.parentNode.querySelector("br");
+                  if(action_node)
+                  {
+                      var action_span = action_node.querySelector("span");
+                      if (action_span)
+                      {
+                          var arrow_span = action_span.querySelector("span.mn-dwn-arw");
+                          if (arrow_span)
+                            arrow_span.setAttribute('style', 'color: #006621 !important');
+                          cite_link.parentNode.appendChild(action_span);
+                      }
+                      var action_link = action_node.querySelector("a");
+                      if (action_link)
+                      {
+                          cite_link.parentNode.appendChild(action_link);
+                      }
+                  }
+              }
+              if (title_link)
+              {
+
+                  if(br_node)
+                  {
+                      title_link.parentNode.appendChild(br_node);
+                  }
+                  title_link.parentNode.appendChild(cite_link.parentNode);
+
+              }
+          }
+     
+        }
 
         /*
          * The main entry
@@ -123,6 +180,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 if (a && a.tagName == 'A')
                     cleanTheLink(a);
             }, true);
+     
+             if (preferences.restoreOldSERP)
+             {
+                fixUpSERP();
+             }
         }
 
         function handleExtensionMessage(msg_event) {

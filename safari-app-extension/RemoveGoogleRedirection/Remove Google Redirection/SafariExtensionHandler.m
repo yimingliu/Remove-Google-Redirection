@@ -30,6 +30,7 @@
 {
     NSDictionary *preferences = [[NSDictionary alloc] initWithObjectsAndKeys:
      [[self sharedUserDefaults] objectForKey:@"disableForImages"],  @"disableForImages",
+     [[self sharedUserDefaults] objectForKey:@"restoreOldSERP"],  @"restoreOldSERP",
      nil];
     return preferences;
 }
@@ -55,7 +56,8 @@
     dispatch_once(&onceToken, ^{
         defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.yimingliu.remove-google-redirection"];
         NSDictionary *appDefaults = @{
-                                      @"disableForImages" : @NO
+                                      @"disableForImages" : @NO,
+                                      @"restoreOldSERP" : @NO
                                       };
         [defaults registerDefaults:appDefaults];
     });
