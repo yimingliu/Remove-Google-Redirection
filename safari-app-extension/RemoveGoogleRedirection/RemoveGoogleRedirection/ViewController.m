@@ -22,7 +22,7 @@
                        toObject:defaultsController
            withKeyPath:@"values.disableForImages"
                options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
-                                                   forKey:@"NSContinuouslyUpdatesValue"]];
+                                                forKey:@"NSContinuouslyUpdatesValue"]];
     // Do any additional setup after loading the view.
 }
 
