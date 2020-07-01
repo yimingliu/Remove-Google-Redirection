@@ -192,7 +192,7 @@
 		53C2581B20D1C7D1000A28B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Yiming Liu";
 				TargetAttributes = {
 					53C2582220D1C7D1000A28B2 = {
@@ -426,6 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XLREUF5H62;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = RemoveGoogleRedirection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,6 +446,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XLREUF5H62;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = RemoveGoogleRedirection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,6 +464,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XLREUF5H62;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Remove Google Redirection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -481,6 +484,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XLREUF5H62;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Remove Google Redirection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
