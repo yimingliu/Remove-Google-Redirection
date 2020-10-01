@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
            function(n){
                return this.substr(0,n-1)+(this.length>n?'...':'');
            };
-          var results = document.querySelectorAll("div.r");
+          var results = document.querySelectorAll("div.g");
           var i;
           for (i=0; i < results.length; i++)
           {
