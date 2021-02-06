@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
               var cite_link = result.querySelector("cite.iUh30");
               var title_link = result.querySelector("h3.LC20lb");
               var br_node = null;
-              var action_node = result.querySelector("div.eFM0qc, div.yWc32e");
+              var action_node = result.querySelector("div.eFM0qc, div.yWc32e, div.csDOgf");
               var img_node = result.querySelector("img.xA33Gc");
               var cite_container_node = result.querySelector("div.NJjxre");
               if (cite_container_node)
