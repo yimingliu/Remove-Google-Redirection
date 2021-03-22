@@ -120,7 +120,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
               var cite_link = result.querySelector("cite.iUh30");
               var title_link = result.querySelector("h3.LC20lb");
               var br_node = null;
-              var action_node = result.querySelector("div.eFM0qc, div.yWc32e, div.csDOgf");
+              var action_node = result.querySelector("div.csDOgf");
+              var translate_node = result.querySelector('div.eFM0qc');
+              //console.log(action_node);
               var img_node = result.querySelector("img.xA33Gc");
               var cite_container_node = result.querySelector("div.NJjxre");
               if (cite_container_node)
@@ -151,13 +153,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
                       var action_span = action_node.querySelector("span");
                       if (action_span)
                       {
+                          
                           var arrow_span = action_span.querySelector("span.mn-dwn-arw");
                           if (arrow_span)
                             arrow_span.setAttribute('style', 'color: #006621 !important');
                           //cite_link.parentNode.appendChild(action_span);
                       }
                      var link_div = result.querySelector("div.B6fmyf");
+                     //console.log("link_div", link_div);
+                     //console.log("link_div_parent", link_div.parentNode);
                      link_div.parentNode.insertBefore(action_node, link_div);
+                  }
+                  if (translate_node)
+                  {
+                     var link_div = result.querySelector("div.B6fmyf");
+                     //console.log("link_div", link_div);
+                     //console.log("link_div_parent", link_div.parentNode);
+                     translate_node.setAttribute('style', 'padding-left: 2em !important');
+                     link_div.parentNode.insertBefore(translate_node, link_div);
+                      
                   }
               }
               if (title_link)
